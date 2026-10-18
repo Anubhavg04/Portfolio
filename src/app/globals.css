@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-vermilion: var(--vermilion);
+  --color-olive: var(--olive);
+  --color-blue: var(--blue);
+  --color-background: var(--bg-color);
+  --color-foreground: var(--text-color);
+  --color-accent: var(--accent);
+  --font-serif: var(--font-fraunces), serif;
+  --font-sans: var(--font-instrument), sans-serif;
+  --font-mono: var(--font-jetbrains), monospace;
+  --font-hand: var(--font-caveat), cursive;
+  
+  --animate-ping-once: ping-once 1s cubic-bezier(0, 0, 0.2, 1) forwards;
+}
+
+@keyframes ping-once {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes slide-down {
+  0% { transform: translateY(-100%); }
+  50% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+@layer base {
+  :root {
+    --paper: #F1E9D8;
+    --ink: #16130F;
+    --vermilion: #D9482B;
+    --olive: #8A8473;
+    --blue: #3B5B7A;
+
+    --bg-color: var(--paper);
+    --text-color: var(--ink);
+    --accent: var(--vermilion);
+  }
+
+  .dark {
+    --bg-color: #0E0F12;
+    --text-color: #EDE6D6; /* bone */
+    --accent: #FF6A3D;
+  }
+
+  body, html {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100%;
+  }
+}
+
+/* View Transition API */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* We only clip the new state if transitioning */
+html.ink-transitioning::view-transition-new(root) {
+  clip-path: var(--ink-clip);
+  z-index: 10;
+}
+html.ink-transitioning::view-transition-old(root) {
+  z-index: 1;
+}
+
+/* Add a thin, feathered darker "bleed ring" at the leading edge */
+html.ink-transitioning::view-transition-new(root) {
+  /* Applying SVG filter via CSS is complex, we could use a drop-shadow on the clip-path or inset box-shadow */
+  /* For the true ink bleed effect, a CSS drop-shadow works well with clip-path */
+  filter: drop-shadow(0 0 8px rgba(0,0,0,0.8)); 
+}
+
+/* Paper Grain Texture Overlay */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.08;
+  mix-blend-mode: multiply;
+}
+
+.dark .grain-overlay {
+  mix-blend-mode: screen; /* or overlay */
+  opacity: 0.05;
+}
+
+/* Lenis smooth scrolling */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}

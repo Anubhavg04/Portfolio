@@ -6,22 +6,23 @@ import { SmoothScrolling } from "../components/SmoothScrolling";
 import { CustomCursor } from "../components/CustomCursor";
 import { Inkwell } from "../components/Inkwell";
 import { SITE_URL } from "../lib/constants";
+import { Analytics } from "@vercel/analytics/next";
 
-const fraunces = Fraunces({ 
-  subsets: ["latin"], 
+const fraunces = Fraunces({
+  subsets: ["latin"],
   variable: "--font-fraunces"
 });
-const instrument = Instrument_Sans({ 
-  subsets: ["latin"], 
-  variable: "--font-instrument" 
+const instrument = Instrument_Sans({
+  subsets: ["latin"],
+  variable: "--font-instrument"
 });
-const jetbrains = JetBrains_Mono({ 
-  subsets: ["latin"], 
-  variable: "--font-jetbrains" 
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains"
 });
-const caveat = Caveat({ 
-  subsets: ["latin"], 
-  variable: "--font-caveat" 
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-caveat"
 });
 
 export const metadata: Metadata = {
@@ -112,6 +113,7 @@ export default function RootLayout({
           {children}
           <Inkwell />
         </SmoothScrolling>
+        <Analytics />
       </body>
     </html>
   );

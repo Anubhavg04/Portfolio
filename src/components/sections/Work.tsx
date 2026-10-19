@@ -281,8 +281,8 @@ function ProjectCard({
       <div
         className={
           isMobileLayout
-            ? "flex md:hidden items-center gap-3 w-full mt-6 pt-4 border-t border-foreground/10"
-            : `hidden md:flex items-center gap-2.5 flex-shrink-0 ${project.featured ? "md:mr-28" : ""}`
+            ? "mobile-action-buttons flex md:hidden items-center gap-3 w-full mt-6 pt-4 border-t border-foreground/10"
+            : `desktop-action-buttons hidden md:flex items-center gap-2.5 flex-shrink-0 ${project.featured ? "md:mr-28" : ""}`
         }
       >
         {hasLive && (
@@ -404,9 +404,17 @@ function ProjectCard({
 
             {/* Cover content - NEVER cover-cropped, using object-contain on paper frame */}
             {project.coverType === "svg-quickeat" ? (
-              <QuickEatTrackerSvg isHovered={isHovered} />
+              <figure className="m-0 p-0 w-full h-full" aria-label="Illustration of a real-time order tracker">
+                <div aria-hidden="true" className="w-full h-full">
+                  <QuickEatTrackerSvg isHovered={isHovered} />
+                </div>
+              </figure>
             ) : project.coverType === "svg-memorymatrix" ? (
-              <MemoryMatrixSvg />
+              <figure className="m-0 p-0 w-full h-full" aria-label="Illustration of the memory matrix game board">
+                <div aria-hidden="true" className="w-full h-full">
+                  <MemoryMatrixSvg />
+                </div>
+              </figure>
             ) : project.cover ? (
               <div className="relative w-full h-full p-2 flex items-center justify-center overflow-hidden">
                 <Image
@@ -414,7 +422,7 @@ function ProjectCard({
                   alt={`${project.title} screenshot`}
                   fill
                   priority={isFirst}
-                  sizes="(max-width: 768px) 100vw, 40vw"
+                  sizes="(max-width: 768px) 100vw, 560px"
                   className="object-contain transition-all duration-300"
                   style={{
                     filter:
@@ -431,7 +439,11 @@ function ProjectCard({
                 />
               </div>
             ) : (
-              <MemoryMatrixSvg />
+              <figure className="m-0 p-0 w-full h-full" aria-label="Illustration of the memory matrix game board">
+                <div aria-hidden="true" className="w-full h-full">
+                  <MemoryMatrixSvg />
+                </div>
+              </figure>
             )}
           </div>
 

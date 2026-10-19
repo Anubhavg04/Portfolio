@@ -230,6 +230,7 @@ export function Hero({ content }: { content: any }) {
                   key={i}
                   className="block overflow-hidden pb-1 -mb-1 whitespace-nowrap"
                 >
+                  {i > 0 && <span className="sr-only">{" "}</span>}
                   {word.split("").map((char: string, j: number) => (
                     <span key={j} className="char inline-block opacity-0">
                       {char}
@@ -354,7 +355,7 @@ export function Hero({ content }: { content: any }) {
                     alt="Desk workspace"
                     fill
                     priority
-                    sizes="(max-width: 768px) 100vw, 40vw"
+                    sizes="(max-width: 768px) 90vw, 640px"
                     className="object-cover"
                   />
                 </div>

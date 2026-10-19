@@ -114,9 +114,14 @@ export const content = {
   about: {
     paragraphs: [
       "I love hard backend problems—concurrency, data integrity, performance—but I also care deeply about the interfaces that wrap them. I ship complete products end-to-end, making sure the engine runs flawlessly and the surface feels effortless.",
-      "Currently exploring React Native. I'm usually serious when coding, but I get funnier once I'm comfortable."
+      "Currently deep-diving into system design and scalable architectures. I'm usually serious when coding, but I get funnier once I'm comfortable."
     ],
-    education: "B.Tech, Electronics & Communication, IIITDM Jabalpur"
+    education: "B.Tech, Electronics & Communication, IIITDM Jabalpur",
+    now: {
+      building: "backend-heavy products",
+      learning: "System Design",
+      status: "open to work"
+    }
   },
   contact: {
     title: "Let's build something that holds up.",

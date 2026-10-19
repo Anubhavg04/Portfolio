@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <main className="flex flex-col w-full selection:bg-accent selection:text-white">
+      <main id="main-content" className="flex flex-col w-full selection:bg-accent selection:text-white">
         <Hero content={content.hero} />
         <Work projects={content.projects} />
         <Stack data={content.stack} />

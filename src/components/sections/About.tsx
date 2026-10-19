@@ -89,8 +89,7 @@ export function About({ content }: { content: any }) {
                     src="/assets/anubhav-portrait.jpg"
                     alt="Anubhav Gupta — backend engineer, mid-debug"
                     fill
-                    priority
-                    sizes="(max-width: 768px) 90vw, 35vw"
+                    sizes="(max-width: 768px) 80vw, 420px"
                     className="object-cover object-top sepia-[0.06]"
                   />
                 </div>
@@ -125,7 +124,7 @@ export function About({ content }: { content: any }) {
                 className="font-sans leading-[1.7] text-foreground"
                 style={{ fontSize: "clamp(1.05rem, 1.2vw, 1.25rem)", maxWidth: "60ch" }}
               >
-                Currently deep-diving into system design and scalable architectures. I&apos;m usually serious when coding, but I get funnier once I&apos;m comfortable.
+                {content.paragraphs?.[1] || "Currently deep-diving into system design and scalable architectures. I'm usually serious when coding, but I get funnier once I'm comfortable."}
               </p>
               {/* Annotation as inline note — always in flow, never overlapping */}
               <p className="font-hand text-2xl text-accent -rotate-2 origin-left mt-1 ml-4">
@@ -141,14 +140,14 @@ export function About({ content }: { content: any }) {
             >
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-12 h-4 bg-white/50 dark:bg-white/15 border border-black/5 shadow-sm" />
               <ul className="space-y-2 font-mono text-xs uppercase tracking-widest text-foreground mt-1">
-                <li><span className="text-olive">Building:</span> backend-heavy products</li>
-                <li><span className="text-olive">Learning:</span> System Design</li>
+                <li><span className="text-olive">Building:</span> {content.now?.building || "backend-heavy products"}</li>
+                <li><span className="text-olive">Learning:</span> {content.now?.learning || "System Design"}</li>
                 <li className="flex items-center gap-2">
                   <span className="text-olive">Status:</span>
                   <span className="relative flex h-2 w-2">
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
                   </span>
-                  open to work
+                  {content.now?.status || "open to work"}
                 </li>
               </ul>
             </div>

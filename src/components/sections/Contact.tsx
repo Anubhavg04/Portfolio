@@ -124,9 +124,16 @@ export function Contact({ content }: { content: any }) {
         {/* Email Container (~16-20px gap) */}
         <div className="mt-4 md:mt-5">
           <div className="relative inline-block group">
-            {/* Screen reader announcement for copy */}
-            <div aria-live="polite" className="sr-only">
-              {copied ? "Email copied to clipboard" : ""}
+            {/* Copied Toast in an aria-live="polite" region that is empty until used */}
+            <div aria-live="polite" className="contents">
+              {copied && (
+                <span
+                  className="absolute -top-10 md:-top-12 right-0 font-hand text-2xl md:text-3xl text-olive animate-bounce pointer-events-none transition-opacity duration-300"
+                  role="status"
+                >
+                  copied ✓
+                </span>
+              )}
             </div>
 
             <button
@@ -159,15 +166,6 @@ export function Contact({ content }: { content: any }) {
                 className="group-hover:stroke-[3.5px] transition-all duration-300"
               />
             </svg>
-
-            {/* Copied Toast */}
-            <span
-              className="absolute -top-10 md:-top-12 right-0 font-hand text-2xl md:text-3xl text-olive animate-bounce pointer-events-none transition-opacity duration-300"
-              style={{ opacity: copied ? 1 : 0 }}
-              aria-hidden="true"
-            >
-              copied ✓
-            </span>
           </div>
 
           <div className="mt-2.5">

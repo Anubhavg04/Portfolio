@@ -110,3 +110,41 @@ html.lenis, html.lenis body {
 .lenis.lenis-smooth iframe {
   pointer-events: none;
 }
+
+/* Accessibility: Skip to content */
+.skip-to-content {
+  position: fixed;
+  top: -120px;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background-color: var(--accent);
+  color: #ffffff;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  border-radius: 2px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+  transition: top 0.15s ease-in-out;
+  text-decoration: none;
+}
+.skip-to-content:focus {
+  top: 1rem;
+  outline: 2px solid var(--text-color);
+  outline-offset: 2px;
+}
+
+/* Breakpoint-isolated button visibility to prevent duplicate DOM interactive items in tab order */
+@media (max-width: 767px) {
+  .desktop-action-buttons {
+    display: none !important;
+  }
+}
+@media (min-width: 768px) {
+  .mobile-action-buttons {
+    display: none !important;
+  }
+}
+

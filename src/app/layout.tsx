@@ -5,6 +5,7 @@ import { NoiseOverlay } from "../components/NoiseOverlay";
 import { SmoothScrolling } from "../components/SmoothScrolling";
 import { CustomCursor } from "../components/CustomCursor";
 import { Inkwell } from "../components/Inkwell";
+import { SITE_URL } from "../lib/constants";
 
 const fraunces = Fraunces({ 
   subsets: ["latin"], 
@@ -24,20 +25,23 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://anubhavgupta.dev"),
+  metadataBase: new URL(SITE_URL),
   title: "Anubhav Gupta | Backend Engineer",
   description: "I build backends that don't break under pressure, and the interfaces that make them feel effortless. Specialized in Java, Spring Boot, and Node.js.",
-  keywords: ["Backend Engineer", "Java", "Spring Boot", "Node.js", "Full Stack", "React Native", "PostgreSQL"],
+  keywords: ["Backend Engineer", "Java", "Spring Boot", "Node.js", "Full Stack", "System Design", "PostgreSQL"],
   authors: [{ name: "Anubhav Gupta", url: "https://github.com/Anubhavg04" }],
   creator: "Anubhav Gupta",
+  alternates: {
+    canonical: SITE_URL,
+  },
   openGraph: {
     title: "Anubhav Gupta | Backend Engineer",
     description: "I build backends that don't break under pressure, and the interfaces that make them feel effortless.",
-    url: "https://anubhavgupta.dev",
+    url: SITE_URL,
     siteName: "Anubhav Gupta Portfolio",
     images: [
       {
-        url: "/og-image.jpg", // Assuming an OG image exists here
+        url: `${SITE_URL}/og-image.jpg`,
         width: 1200,
         height: 630,
         alt: "Anubhav Gupta — Backend Engineer",
@@ -50,7 +54,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Anubhav Gupta | Backend Engineer",
     description: "I build backends that don't break under pressure, and the interfaces that make them feel effortless.",
-    images: ["/og-image.jpg"],
+    images: [`${SITE_URL}/og-image.jpg`],
   },
   icons: {
     icon: "/favicon.ico",
@@ -62,7 +66,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Anubhav Gupta",
-  url: "https://anubhavgupta.dev", // Replace with actual URL if known
+  url: SITE_URL,
   jobTitle: "Backend Engineer",
   sameAs: [
     "https://github.com/Anubhavg04",
@@ -99,6 +103,9 @@ export default function RootLayout({
         />
       </head>
       <body suppressHydrationWarning className="antialiased selection:bg-accent selection:text-white relative font-sans overflow-x-hidden min-h-screen">
+        <a href="#main-content" className="skip-to-content">
+          Skip to content
+        </a>
         <SmoothScrolling>
           <NoiseOverlay />
           <CustomCursor />

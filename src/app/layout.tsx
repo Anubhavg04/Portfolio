@@ -5,6 +5,7 @@ import { NoiseOverlay } from "../components/NoiseOverlay";
 import { SmoothScrolling } from "../components/SmoothScrolling";
 import { CustomCursor } from "../components/CustomCursor";
 import { Inkwell } from "../components/Inkwell";
+import { Analytics } from "@vercel/analytics/next";
 
 const fraunces = Fraunces({ 
   subsets: ["latin"], 
@@ -105,6 +106,7 @@ export default function RootLayout({
           {children}
           <Inkwell />
         </SmoothScrolling>
+        <Analytics />
       </body>
     </html>
   );
